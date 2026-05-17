@@ -1,0 +1,663 @@
+# Project Evolution
+
+## Overview
+
+What started as a small Python script built out of frustration during a difficult job search slowly evolved into a much larger technical and personal learning experience.
+
+The original goal was extremely simple: automate the most repetitive and emotionally exhausting part of looking for a job — searching through hundreds of job posts manually every day.
+
+Over time, the project evolved into:
+
+- a large-scale exploration of ethical scraping patterns,
+- infrastructure limitations,
+- observability and debugging,
+- search optimization,
+- human behavior modeling,
+- user friction reduction,
+- and eventually a complete pivot away from scraping as the core product idea.
+
+The project ultimately reached a point where the focus stopped being "how to scrape better" and became:
+
+> "How can a system better understand human intent during the job search process?"
+
+That question became the foundation for the next stage of development.
+
+---
+
+## Initial Idea
+
+The initial idea was born from frustration.
+
+Like many people in the tech industry, especially during difficult hiring periods, I spent a large amount of time refreshing LinkedIn, filtering jobs manually, opening posts, closing posts, changing filters, and repeating the same process every day.
+
+Ironically, the most exhausting part of applying for jobs was not preparing for interviews or improving skills.
+
+It was simply searching.
+
+At the time, I realized that most of my search behavior was repetitive:
+
+- I used the same keywords every day.
+- I applied the same filters repeatedly.
+- I checked the same pages constantly.
+- I refreshed listings manually hoping to be early enough.
+
+The project started as a simple attempt to automate that repetitive behavior.
+
+Not to build a platform.  
+Not to build a company.  
+Not to monetize anything.
+
+Just to reduce mental exhaustion.
+
+---
+
+## First Automation Workflow
+
+The very first version of the project was extremely small.
+
+It was a simple Python script of roughly 20 lines.
+
+At the time, my understanding of LinkedIn's search system was very superficial. I noticed that many search filters could be manipulated directly through the URL structure itself, so instead of thinking deeply about scraping architecture or backend systems, I focused on replicating my own manual behavior.
+
+The script simply:
+
+1. Opened LinkedIn job search pages.
+2. Used predefined keyword filters.
+3. Scanned titles.
+4. Compared results against a list of around 15 keywords.
+5. Sent matching offers back as results.
+
+The filtering logic itself was primitive but surprisingly effective.
+
+If a job title matched at least two predefined keywords, the system considered it relevant enough.
+
+At this stage, the goal was not precision.  
+The goal was speed.
+
+The idea was simple:
+
+> "If I am already doing this manually every day, why not automate it and expand the search scope at the same time?"
+
+This was also the first moment where I realized automation could directly improve my response time during hiring processes.
+
+---
+
+## Transition to Telegram
+
+Once the script successfully worked for the first time, a new problem immediately appeared.
+
+Receiving results by email was too slow.
+
+At the time, one of my biggest frustrations with LinkedIn was notification delay. Many good job opportunities disappeared quickly or reached hundreds of applicants within minutes.
+
+My first reaction was honestly chaotic.
+
+I briefly considered:
+
+- email integrations,
+- Salesforce API bridges,
+- WhatsApp notifications,
+- and several unnecessarily complex ideas driven mostly by frustration.
+
+The WhatsApp approach was quickly discarded.
+
+Not only because the API was paid and restrictive, but because it introduced unnecessary complexity into what was still just a small personal automation script.
+
+Telegram became the obvious solution.
+
+Not because I initially understood its ecosystem, open-source philosophy, or bot infrastructure.
+
+But because it solved the only problem I cared about at that moment:
+
+> instant delivery.
+
+Telegram was the first major technological shift in the project.
+
+It introduced:
+
+- API integrations,
+- messaging systems,
+- user interaction flows,
+- and the first real feeling that the project was becoming something larger than a simple script.
+
+This was also the first moment where the project started feeling personally meaningful.
+
+---
+
+## Infrastructure Exploration
+
+As soon as the automation became functional, another major limitation appeared.
+
+The script still depended on a computer staying permanently active.
+
+At the time, I did not own a working personal computer. I depended on borrowing my brother's laptop whenever he had free time available.
+
+That immediately made the project unreliable.
+
+The system could not truly be "automatic" if:
+
+- the machine was unavailable,
+- the laptop had to remain turned on constantly,
+- or someone else needed to sacrifice resources and time for the project to continue running.
+
+This forced me into cloud infrastructure much earlier than expected.
+
+Initially, I approached cloud systems with almost no infrastructure knowledge.
+
+My first attempt was Google Cloud.
+
+I tried activating the free trial multiple times, failed repeatedly, became frustrated, and then started researching alternatives more seriously.
+
+That process eventually led me to Oracle Cloud Infrastructure.
+
+OCI was not beginner-friendly.
+
+At the time, I did not fully understand:
+
+- regions,
+- instances,
+- processors,
+- memory allocation,
+- long-term account limitations,
+- or cloud provisioning.
+
+I relied heavily on AI guidance simply to get started.
+
+Using step-by-step assistance, I created my first instance without fully understanding what I was configuring:
+
+- AMD processor,
+- 1 GB RAM,
+- minimal storage,
+- Ubuntu image,
+- Python environment,
+- dependencies and libraries.
+
+But despite all the ignorance surrounding the setup process, it worked.
+
+The bot successfully ran remotely.
+
+That moment was extremely important.
+
+It was the first time the project stopped feeling like a local script and started feeling like an actual deployable system.
+
+## Android Development Environment
+
+Losing access to a proper computer completely changed the direction of the project.
+
+At that point, development depended on borrowing my brother’s laptop whenever he had free time. The problem was that he was finishing his thesis and final university project, so free time barely existed. What started as a small automation script suddenly became something I genuinely cared about, and the lack of hardware became a real limitation.
+
+The more I learned about cloud infrastructure, deployment environments, and automation, the more motivated I became. For the first time, I was not building a generic portfolio project copied from a tutorial or designed to “look good” on a resume. This was solving a real problem I was personally experiencing.
+
+Instead of accepting hardware limitations as a blocker, I started looking for alternatives.
+
+I remembered an old Android phone stored in a drawer:
+
+- 6GB RAM
+- 128GB storage
+- Completely unused
+
+At first the idea sounded ridiculous, but after researching modern Android development environments, I realized phones had become surprisingly powerful. Even though it was not a high-end device, it still offered significantly more resources than the free Oracle instance I had initially deployed.
+
+That was the moment I stopped treating infrastructure as something external and started treating it as part of the engineering challenge itself.
+
+I formatted the device and turned it into a dedicated development environment:
+
+- Installed Termux
+- Installed Acode
+- Rebuilt the entire workflow around mobile development
+- Started working directly from the phone
+
+The experience was chaotic but transformative.
+
+Android development environments introduce a completely different category of problems:
+
+- package incompatibilities
+- broken dependencies
+- unstable Linux behavior under Android
+- restricted filesystem permissions
+- missing native libraries
+- inconsistent support for Python tooling
+
+At first, almost every development session became a battle against the environment itself.
+
+But strangely, that became part of the motivation.
+
+Instead of seeing the limitations as frustrating, I started seeing them as engineering constraints that forced creativity and adaptability. Every problem solved taught me something new about Linux environments, dependency management, Python packaging, infrastructure isolation, and deployment strategies.
+
+The Android setup eventually became more than just a temporary workaround.
+
+It became:
+
+- my development machine
+- my testing environment
+- my deployment environment
+- my experimentation sandbox
+
+And more importantly, it removed the dependency on external conditions.
+
+I no longer had to wait for access to somebody else’s computer to keep building.
+
+---
+
+## Scaling Challenges
+
+As the project evolved, every solved problem revealed a new limitation behind it.
+
+The original Oracle Cloud instance had been enough for a simple proof of concept, but once the bot started growing in complexity and usage patterns became more demanding, the infrastructure limitations became impossible to ignore.
+
+The instance only had:
+
+- 1GB RAM
+- limited CPU resources
+- minimal storage
+- almost no room for experimentation
+
+For me and a couple of friends, it was technically functional, but the project had already outgrown its original purpose.
+
+At the same time, the Android environment solved some problems while creating entirely new ones.
+
+I now had more local resources than the cloud instance itself, but development became increasingly difficult because of:
+
+- compatibility issues
+- broken packages
+- Linux emulation limitations
+- Python dependency conflicts
+- Android restrictions
+- unstable development workflows
+
+The deeper I went into infrastructure and automation, the more time I spent solving environment problems instead of improving the product itself.
+
+At the same time, my mental state started deteriorating without me noticing it.
+
+Originally, the project progressed slowly because development time depended on borrowing a laptop. Once the Android setup removed that limitation, I suddenly had unrestricted access to the project at all times.
+
+That changed everything.
+
+I started spending:
+
+- 10 hours a day
+- sometimes 12+
+- sleeping poorly
+- constantly thinking about optimizations
+- constantly testing new ideas
+
+The project evolved faster than my ability to organize it.
+
+Code grew aggressively.
+
+Ideas multiplied faster than implementation quality.
+
+What started as a small script slowly transformed into a massive monolithic system full of:
+
+- experimental logic
+- unfinished refactors
+- temporary patches
+- duplicated flows
+- loose threads
+- undocumented behavior
+- partially implemented features
+
+At one point the codebase reached nearly 3000 lines inside a single functional structure.
+
+And despite being functional, internally it was becoming extremely fragile.
+
+Instead of properly organizing systems before expanding them, I became obsessed with refining scraping behavior itself.
+
+The challenge stopped being:
+
+> “Can I automate job searching?”
+
+And became:
+
+> “Can I make scraping behavior indistinguishable from human behavior?”
+
+That shift pushed me into an entirely different category of research.
+
+I started studying:
+
+- LinkedIn behavior patterns
+- anti-bot detection systems
+- request pacing
+- timing randomness
+- interaction intervals
+- scraping aggressiveness
+- regional limitations
+- job posting patterns
+- user interaction simulation
+- HTML structure hierarchy
+- market activity cycles
+
+I experimented with concepts that never even reached production:
+
+- IP randomization ideas
+- behavioral timing systems
+- randomized delays
+- jitter systems
+- adaptive scan intervals
+- non-linear interaction patterns
+
+Eventually I reached a point where the scraping behavior became highly optimized and extremely difficult to distinguish from normal user behavior.
+
+The system dynamically adjusted:
+
+- scan frequency
+- pauses
+- interruptions
+- request pacing
+- interaction timing
+
+All while maximizing vacancy coverage for the user without creating aggressive patterns against LinkedIn.
+
+At the same time, search logic itself was evolving independently.
+
+The original scoring model was extremely simple:
+
+- minimum keyword matches
+- basic title filtering
+- hard inclusion logic
+
+But the more I observed how people actually searched for jobs, the more I realized users themselves were often the biggest bottleneck in search quality.
+
+That realization changed the direction of the research completely.
+
+Instead of trying to aggressively improve extraction, I started trying to improve interpretation.
+
+The focus shifted toward:
+
+- reducing false positives
+- improving result quality
+- making searches feel personalized
+- balancing user control with automation
+- minimizing friction
+- refining intent interpretation
+
+This led to increasingly complex experimentation:
+
+- exclusion keywords
+- scoring systems
+- weighted logic
+- conditional filtering
+- user-controlled refinement
+- dynamic search structures
+
+And all of it existed inside an increasingly unstable monolithic codebase.
+
+---
+
+## Observability and Debugging
+
+At the beginning, debugging was simple.
+
+Problems were obvious:
+
+- loops repeating incorrectly
+- broken logic chains
+- disconnected conditions
+- functions failing visibly
+
+The solution mindset was reactive:
+
+> “Fix what is broken and continue.”
+
+But because the project evolved without a long-term architectural plan, the codebase slowly became dominated by temporary fixes instead of structured systems.
+
+The project accumulated:
+
+- patches over patches
+- incomplete comments
+- inconsistent logic
+- duplicated behaviors
+- disconnected flows
+- debugging shortcuts
+
+Testing also became chaotic.
+
+Instead of validating systems holistically, I kept following an isolated cycle:
+
+1. test one thing
+2. find a problem
+3. patch it
+4. continue
+5. accidentally break something else
+6. repeat
+
+The larger the project became, the harder it became to understand whether new bugs were caused by:
+
+- old logic
+- recent patches
+- hidden dependencies
+- unintended side effects
+
+At the same time, the project started emotionally expanding beyond the code itself.
+
+I had already shown the bot to:
+
+- my parents
+- my brother
+- close friends
+
+And their reactions affected me more than expected.
+
+For the first time, I was not only thinking technically.
+
+I started thinking about:
+
+- usability
+- accessibility
+- user frustration
+- search fatigue
+- interaction flow
+- emotional experience
+
+Ironically, while trying to solve those higher-level problems, I was neglecting the technical foundation underneath everything.
+
+Technical debt accumulated rapidly.
+
+---
+
+## Search Pattern Optimization
+
+Eventually, scraping behavior and search behavior stopped feeling like the same problem.
+
+That distinction became one of the most important turning points of the entire project.
+
+At first, I believed LinkedIn restricted important filters unless the user was authenticated with a valid session token.
+
+Because of that assumption, I initially experimented with:
+
+- authenticated requests
+- personal token usage
+- session-based filtering
+- API alternatives
+
+None of those approaches were scalable or reasonable.
+
+The more I studied LinkedIn’s actual HTML structure and filtering hierarchy, the more I realized my original assumptions were wrong.
+
+The platform itself was not heavily restricting filters based on authentication.
+
+Most filtering behavior came from relatively simple hierarchical logic structures.
+
+That realization changed everything.
+
+Instead of trying to optimize scraping through authentication tricks or more aggressive extraction methods, I decided to redesign the entire search philosophy.
+
+The user would now become responsible for refining intent.
+
+The bot would become responsible for extraction efficiency and interpretation.
+
+That distinction fundamentally changed the system.
+
+Instead of asking users for isolated keywords, I started asking them to think like real job seekers:
+
+- desired job titles
+- realistic searches
+- human phrasing
+- actual search intent
+
+This allowed the system to behave much more naturally.
+
+Using LinkedIn’s own search hierarchy, the bot could:
+
+1. perform human-like searches
+2. refine results dynamically
+3. reduce unnecessary scans
+4. minimize false positives
+5. decrease scraping aggressiveness
+
+At the same time, users gained more control over how searches behaved.
+
+I experimented with:
+
+- advanced searches
+- simplified searches
+- flexible scoring
+- weighted averages
+- exclusion systems
+- customizable thresholds
+
+Eventually I reached an important conclusion:
+
+Traditional keyword matching was too restrictive.
+
+The real problem was not extraction.
+
+The real problem was understanding intent.
+
+That realization became the foundation for everything that came after.
+
+The focus slowly shifted away from scraping itself and toward creating systems capable of reducing the gap between:
+
+- what users actually want
+- and how users explain what they want
+
+---
+
+## Modularization
+
+Modularization should have happened much earlier.
+
+But at the time, the project evolved too quickly for me to recognize how dangerous the architecture had become.
+
+The system was technically functional, but internally it was collapsing under its own complexity.
+
+The monolithic structure contained:
+
+- nearly 3000 lines of code
+- undocumented logic
+- scattered comments
+- temporary fixes
+- experimental systems
+- duplicated flows
+- mixed responsibilities
+
+And most importantly:
+
+Everything was organized around technologies instead of responsibilities.
+
+The project was separated by:
+
+- scraping logic
+- Telegram interactions
+- infrastructure experiments
+- filtering systems
+
+But not by actual functional architecture.
+
+Eventually, the pressure became impossible to ignore.
+
+At that point modularization stopped being a “good practice” idea and became a survival necessity.
+
+Ironically, the process of modularizing the project ended up reorganizing my own thinking as well.
+
+Once I started separating responsibilities clearly, I realized something extremely important:
+
+The project no longer needed to depend entirely on scraping behavior.
+
+I started exploring:
+
+- SQLite databases
+- local persistence
+- historical vacancy tracking
+- cached interpretation systems
+- user-driven refinement
+
+And eventually I discovered Pydantic V2.
+
+That became another major technical turning point.
+
+Unfortunately, Android environments introduced severe compatibility limitations with modern Python tooling.
+
+To properly support newer dependency structures, I had to isolate the development environment completely.
+
+That led to another infrastructure transition:
+
+- Debian inside Termux
+- isolated Linux environment
+- separated development layers
+- proper dependency control
+
+After weeks of instability, patches, failures, and experimentation, I finally reached something that felt like a clean starting point again.
+
+For the first time in a long time, I had:
+
+- a functional isolated environment
+- a clearer architectural vision
+- a cleaner separation of responsibilities
+- and a realistic path forward
+
+---
+
+## Pivot Toward Search-Oriented Systems
+
+Once the architecture started becoming clearer, the biggest realization finally appeared:
+
+I no longer needed to optimize scraping itself.
+
+I had already gone beyond that.
+
+The real value was never extraction.
+
+The real value was interpretation.
+
+The deeper I researched user behavior, job searching frustration, and filtering systems, the more obvious it became that the real problem was not lack of information.
+
+The real problem was the gap between:
+
+- human intention
+- and machine interpretation
+
+At that point the project fundamentally changed direction.
+
+The goal was no longer:
+
+> “Build a better scraper.”
+
+The goal became:
+
+> “Build a better search experience.”
+
+That did not mean abandoning the entire scraping research process.
+
+On the contrary.
+
+Everything learned during scraping optimization became foundational knowledge for the next phase.
+
+The scraping research became:
+
+- the technical foundation
+- the experimentation layer
+- the behavioral analysis phase
+- the infrastructure learning process
+
+But the future vision became something much larger:
+
+- search-oriented systems
+- intent interpretation
+- personalized filtering
+- user-centered discovery
+- adaptive recommendation systems
+
+The project stopped being about extraction engines.
+
+And started becoming about helping people communicate what they are actually looking for.
