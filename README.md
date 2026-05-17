@@ -30,6 +30,9 @@ While experimenting with automation and scraping systems, the project gradually 
 
 This repository documents the experimentation and technical evolution that led from traditional scraping workflows toward search-oriented system design.
 
+To see the full development process with an interactive mobile design and narrative log, check out the docs and my devlog: [Project Devlog](https://devlogentregafinal.netlify.app/).
+
+
 ---
 
 ## Repository Scope
