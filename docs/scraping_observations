@@ -1,0 +1,20 @@
+# Scraping Observations
+
+## Scope and Baseline Exploration
+* The scraping scope was deliberately reduced to Colombia only to transform a massive, unpredictable architecture into a measurable engineering problem.
+* The system design debunked the initial assumption that LinkedIn strictly limits advanced search filters to authenticated sessions with authorization tokens.
+* Shifting away from authentication bypass workarounds allowed the core logic to focus entirely on structural search precision, scraping intervals, scan boundaries, and human-like interaction loops.
+
+## Human Behavior Modeling and Limits
+* Empirical research showed that even highly active users rarely browse past 10 continuous pages (250 job offers) before experiencing severe cognitive fatigue and disengaging.
+* Through systematic data collection, the national publishing baseline was calculated to be approximately 550 job posts per day in Colombia, featuring sharp activity spikes between 10 AM and 2 PM.
+* This daily volume of 550 listings (~22 pages) was established as the strict system hard limit.
+* Scan windows were dynamically optimized to match publication frequencies: a maximum of 14 pages for 7-hour intervals, 8 pages for 3-hour intervals, and 2 pages for 1-hour updates.
+
+## Anti-Detection and Evasiveness Strategy
+* IP address rotation infrastructures were analyzed but completely discarded due to an unfavorable cost-benefit ratio at this phase of development.
+* Anti-detection mechanisms were built around mimicking human pacing through randomized delay loops, jitter systems, and adaptive stop triggers.
+* To prevent anti-bot flagging on empty search results, a randomized jitter logic was introduced to halt scans non-deterministically after 1, 2, or 3 consecutive empty pages.
+* If a scan breached defensive thresholds, the engine implemented a safety cooling protocol, automatically blocking manual executions for 45 to 60 minutes while notifying the user via the interface.
+* A historical deduplication layer was integrated to dramatically minimize request frequency; once an initial wide-window scan completed, subsequent automated sweeps only needed to inspect roughly 2 pages per hour.
+* A structural contradiction emerged when advanced relevance filtering was introduced: the scraper still had to read and parse already-stored data patterns simply to verify duplicates, creating an unavoidable interaction overhead that exposed the absolute architectural limits of web scraping.
