@@ -1,0 +1,20 @@
+# Infrastructure Notes
+
+## Initial Hardware and Cloud Constraints
+* Early infrastructure choices were entirely reactive, operating under the constraint of borrowed hardware (a relative's graphic design laptop) with highly erratic availability.
+* The initial remote deployment was forced onto Oracle Cloud Infrastructure (OCI) Free Tier due to recurrent card verification rejections on alternative platforms like Google Cloud.
+* Configured via automated assistance, the project ran on a minimal AMD Compute shape provisioned with only 1GB of RAM running an Ubuntu environment.
+* The rigid 1GB RAM boundary strictly prohibited the integration of resource-heavy frameworks, preventing the use of Selenium, dedicated browser automation layers, PostgreSQL instances, or paid IP rotation APIs.
+* This severe resource bottleneck accidentally became an engineering benefit, forcing a strict development focus on lightweight systems, practical execution, low memory overhead, and functional simplicity over overengineering.
+
+## Mobile Development and Environment Isolation
+* Due to an absolute lack of dedicated computing hardware, the entire development workspace was migrated to a repurposed Android phone equipped with 6GB of RAM and 128GB of internal storage.
+* Local persistence was managed through SQLite, aligning perfectly with a low-overhead, zero-cost, and maintenance-free deployment philosophy.
+* Operating natively inside Termux introduced critical environment barriers, including restricted filesystem permissions, broken dependencies, and severe compatibility failures with Rust toolchains and modern Pydantic wheels.
+* To bypass these emulated environment instabilities, a complete Debian Linux distribution was successfully isolated and run directly through Termux.
+* This architectural isolation provided clean Python dependency management, native wheel compilation support, and a highly stable, long-term mobile development environment.
+
+## Interface Infrastructure and AI Resource Management
+* Initial user interaction layers utilizing standard Telegram bots revealed major friction and cognitive overload for non-technical users.
+* The communication infrastructure was evolved into Telegram Mini Apps, providing visual clarity, structured interactive flows, lower friction, and scalable frontend UI components.
+* Incorporating Gemini Flash 2.5 Lite for user guidance shifted infrastructure planning metrics away from typical RAM/CPU limits towards a model focused on minimizing token consumption and computational costs per user interaction.
