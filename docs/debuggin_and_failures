@@ -1,0 +1,15 @@
+# Debugging and Failures
+
+## Monolithic Debt and Operational Blindspots
+* Postponing architectural structure during early phases caused the codebase to balloon organically into a highly fragile, tightly coupled monolith of nearly 3,000 lines of code.
+* The absence of an organized logging infrastructure or telemetry systems meant the engine suffered from frequent silent failures, where critical background processes ceased executing without leaving any diagnostic data.
+* Software verification was restricted to an isolated, reactive feedback loop: applying unstructured code patches to resolve an immediate bug routinely introduced unintended side effects that broke entirely unrelated components.
+
+## Data Inconsistency and Normalization Failures
+* A major data integrity issue arose from LinkedIn's underlying HTML structure, which frequently omitted exact timestamps and instead injected vague, human-readable strings such as "Less than an hour ago" or "Recently posted".
+* To protect the precision of the 24-hour scanning window, a custom data normalization system dubbed "Artificial Handmade Intelligence" was built.
+* This system relied heavily on complex procedural rules, pattern regex interpretation, and heuristic categorization assumptions; while it resolved the immediate timeline issues, it was deeply unreadable, highly prone to breaking, and incredibly difficult to debug.
+
+## Mobile Refactoring Bottlenecks
+* Attempting to untangle a 3,000-line monolith inside a restricted mobile development terminal (without proper documentation or structural separation) caused highly volatile code breakages and massive mental overhead.
+* Resolving this technical debt required a dedicated week of intensive, 12-hour daily programming sessions focused exclusively on mapping hidden module dependencies, establishing modular separation, and embedding a functional logging architecture to stabilize core flows.
