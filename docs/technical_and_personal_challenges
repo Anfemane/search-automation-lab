@@ -1,0 +1,705 @@
+--------------------------------------##### Environment Limitations #####----------------------------------------
+
+At the beginning, hardware limitations were not the main problem.  
+My brother’s laptop was powerful enough for development since he worked in graphic design and 3D modeling.
+
+The first real limitation was automation itself.
+
+I did not own a personal computer or dedicated deployment infrastructure, which meant the project depended entirely on borrowed hardware and temporary availability.
+
+The first infrastructure attempt was Oracle Cloud Infrastructure (OCI), mainly because of its free tier availability. At that stage, I understood very little about cloud environments, deployment regions, instance configuration, or infrastructure scaling.
+
+As development continued, another limitation appeared:
+
+time.
+
+My brother entered the final weeks of his university semester, meaning access to the laptop became increasingly limited. This forced me to rethink the entire development workflow.
+
+At that point I pivoted toward using an old Android phone as a development environment.
+
+Initially, this solved the hardware access problem while introducing a completely new category of limitations:
+
+- Android compatibility issues
+- restricted Linux behavior
+- dependency conflicts
+- unstable package support
+- limited tooling compatibility
+
+As the project became more complex and modularization started becoming necessary, I realized the environment itself had become one of the largest technical blockers.
+
+To overcome those limitations, I isolated the entire workflow inside a Debian environment running through Termux.
+
+This transition allowed me to:
+
+- bypass Android package limitations
+- use cleaner dependency structures
+- support modern Python tooling
+- prepare the project for modular architecture
+- create a more stable long-term development environment
+
+More importantly, it removed environment instability as a constant blocker during development.
+
+#### Infrastructure Constraints ####
+
+Infrastructure was never planned from the beginning.  
+At first, the entire project existed only to solve a personal problem quickly, so most infrastructure decisions were reactive instead of strategic. That changed as soon as the bot started working consistently and other people began asking to use it.
+
+The first infrastructure constraint was not technical, it was personal.  
+I did not own a computer at the time and depended on my brother’s laptop whenever he had free time. Once the automation proved useful, I realized the project could not evolve if it depended on somebody else’s hardware availability.
+
+That limitation pushed me toward cloud infrastructure for the first time.
+
+Without understanding much about cloud architecture, regions, compute shapes, or scaling, I created a free Oracle Cloud Infrastructure account because Google Cloud rejected my card multiple times during the free trial activation process. At that moment I barely understood what a VM instance was. I simply followed a step-by-step AI-generated guide and deployed the project into a minimal AMD instance with 1GB RAM.
+
+Ironically, I was so disconnected from infrastructure concepts at the time that I confidently told my friends I would eventually use the same server to host a Minecraft server for us because I believed Oracle’s free tier was “basically unlimited power.”
+
+It was not.
+
+As soon as the bot became stable enough for multiple users, infrastructure limitations started becoming obvious very quickly.
+
+The 1GB RAM constraint forced me to think differently.  
+I could not afford heavy technologies, unnecessary dependencies, or expensive architectural decisions. At one point I considered technologies such as:
+
+- Selenium
+- PostgreSQL
+- Paid APIs
+- Dedicated web infrastructure
+- IP rotation systems
+- Browser automation layers
+
+But every single one of those decisions increased infrastructure complexity and resource consumption beyond what the project phase justified.
+
+That constraint accidentally became one of the best things that happened to the project.
+
+Because resources were so limited, I was forced to prioritize:
+- lightweight systems
+- functional design
+- low resource consumption
+- practical experimentation
+- simplicity over overengineering
+
+The downside was technical debt.
+
+At that stage, the only thing that mattered was making the system work.  
+If a patch solved a problem without immediately breaking another feature, it went directly into production code.
+
+Threads, listeners, configuration wizards, diagnostic logs, request locks, deduplication systems, temporary fixes and procedural logic all accumulated inside the same growing monolith.
+
+The infrastructure limitations also shaped how scraping itself evolved.
+
+Because the Oracle instance had low priority inside one of the most congested OCI regions, and because LinkedIn actively fights large-scale scraping farms every day, I realized I was entering a technical battle with extremely limited resources.
+
+At that point I understood two important things:
+
+1. My development environment and production environment could not remain the same.
+2. Infrastructure optimization mattered more than feature quantity.
+
+That realization caused another major architectural shift.
+
+I shut down the Oracle instance temporarily and redefined the environments:
+- Oracle would eventually become production infrastructure.
+- Android would become the development environment.
+
+That separation changed everything.
+
+Using a repurposed Android device with 6GB RAM and 128GB storage gave me significantly more flexibility than the original cloud instance. More importantly, it allowed unrestricted experimentation without risking production stability.
+
+As the project evolved further, SQLite became the natural choice for local persistence because it aligned perfectly with the project philosophy at the time:
+- lightweight
+- efficient
+- low maintenance
+- simple deployment
+- no external infrastructure costs
+
+However, database usage introduced a completely new category of infrastructure constraints.
+
+I already had prior experience working with structured data, APIs, and different data scales, so I understood that storing information was not enough. Information quality, normalization, consistency, and organization would directly affect system performance later.
+
+This became critical after identifying a major filtering issue inside LinkedIn’s HTML structure.
+
+Many job cards did not expose exact timestamps.  
+Instead, they used vague human-readable labels such as:
+- “Less than an hour ago”
+- “Recommended”
+- “Recently posted”
+
+Because my scraping system was optimized around expanding scan windows up to 24 hours while remaining undetectable, inconsistent timestamps became a major reliability problem.
+
+To solve it, I created what I jokingly called an “Artificial Handmade Intelligence” normalization system:
+- procedural normalization rules
+- pattern interpretation
+- heuristic categorization
+- contextual assumptions
+
+It was difficult to read, difficult to debug, and difficult to maintain.
+
+But it worked.
+
+Still, it became obvious that scaling a growing database on top of procedural normalization logic would eventually become unsustainable.
+
+That led me toward Pydantic V2.
+
+Pydantic represented a turning point because it aligned perfectly with the new philosophy:
+- clean data validation
+- structured models
+- scalability
+- maintainability
+- reduced long-term complexity
+
+Unfortunately, Android introduced another infrastructure barrier.
+
+Rust dependencies and Pydantic wheel compatibility were heavily restricted inside the Termux environment. I initially tried patching the problem manually, but I quickly realized I was repeating the same mistake again:
+patching temporary solutions for systems that were supposed to simplify scaling.
+
+After researching deeper, I discovered I could isolate a complete Linux environment inside Termux using Debian.
+
+That decision solved multiple problems simultaneously:
+- dependency management
+- Python compatibility
+- wheel installation issues
+- environment isolation
+- future scalability
+- cleaner development workflows
+
+More importantly, it changed how I viewed infrastructure entirely.
+
+Infrastructure stopped being “where the bot runs” and became part of the product philosophy itself.
+
+Every technical decision started being evaluated through:
+- cost efficiency
+- scalability
+- user accessibility
+- development stage appropriateness
+- maintenance cost
+- long-term sustainability
+
+This philosophy also influenced UX decisions.
+
+Telegram itself became a constraint study.
+
+For developers, Telegram bots are intuitive and powerful.  
+For average Colombian users unfamiliar with Telegram, they are confusing and overwhelming.
+
+That became an important realization:
+the problem was no longer just finding jobs, but reducing friction between the user and the system itself.
+
+Inline buttons solved technical workflows but created cognitive overload.
+
+I experimented with:
+- reducing message density
+- simplifying interactions
+- adaptive flows
+- guided experiences
+- contextual explanations
+- personalized controls
+
+But none of those solutions fully solved the core issue.
+
+The system still behaved like a technical tool instead of a human-centered experience.
+
+That is when Mini Apps became the next logical infrastructure evolution.
+
+Mini Apps allowed:
+- cleaner UX
+- lower interaction friction
+- visual clarity
+- structured flows
+- future scalability
+- adaptive interfaces
+
+Most importantly, they aligned with the core philosophy:
+do not destroy what already works — adapt it into something more human.
+
+At the same time, AI integration introduced an entirely new category of infrastructure constraints:
+token costs.
+
+While experimenting with AI-assisted search guidance using Gemini Flash 2.5 Lite, infrastructure planning evolved again from:
+“How do I optimize RAM and CPU usage?”
+to:
+“How do I optimize computational cost per user interaction?”
+
+That completely changed the optimization priorities.
+
+The AI system itself was intentionally lightweight:
+- users describe themselves
+- AI interprets intent
+- AI suggests job directions
+- AI proposes optimized searches
+- AI generates refined keyword structures
+
+The goal was never replacing user intent.  
+The goal was reducing the gap between:
+- what the user wants
+- and what the user knows how to search for
+
+At that point infrastructure stopped being purely technical and became strategic.
+
+The project was no longer evolving around scraping efficiency alone.  
+It was evolving around resource optimization as a philosophy:
+- optimize infrastructure
+- optimize interactions
+- optimize cognitive load
+- optimize costs
+- optimize filtering precision
+- optimize intent understanding
+
+That philosophy eventually became one of the foundations for the project pivot away from scraping-centric systems and toward search-oriented systems.
+
+-------------------------------------##### Scraping Detection Problems ######-----------------------------------
+
+When the project started, I did not even know what scraping was or that what I was building already had a name.
+
+The original objective was simple:
+automate the exhausting process of manually refreshing job boards all day long looking for opportunities before they disappeared.
+
+But as the project evolved and became more reliable, I realized I was walking a very thin gray line technically and ethically.
+
+I started researching scraping itself:
+- what it was,
+- how companies used it,
+- how platforms detected it,
+- and how large-scale scraping systems behaved.
+
+At the same time, I discovered an entire ecosystem around scraping:
+- enterprise scraping services
+- AI-assisted extraction systems
+- browser automation farms
+- proxy rotation systems
+- anti-detection infrastructures
+
+That was the moment I understood two important things:
+
+1. I could not build a serious long-term product on top of LinkedIn’s public data through aggressive scraping.
+2. I could not risk burning the IP address of my parents’ house or a low-priority Oracle Cloud instance already likely flagged due to its Ashburn East region origin.
+
+At that point the project stopped feeling like “automation” and started becoming a reliability and sustainability problem.
+
+Instead of abandoning the idea entirely, I decided to optimize the process itself.
+
+The first major limitation was scope.
+
+Trying to optimize scraping globally made no sense considering:
+- my infrastructure limitations,
+- my development stage,
+- and my actual objective.
+
+Through LinkedIn’s filtering hierarchy I understood that location was one of the highest-priority search constraints, so I reduced the entire system scope to Colombia only.
+
+That decision made the problem measurable.
+
+Instead of guessing limits, I started trying to define intelligent boundaries through observation and data analysis.
+
+One of my earliest misconceptions was believing LinkedIn restricted certain filters unless the user was authenticated with an authorization token.
+
+When I discovered this was false, the entire scraping logic changed.
+
+Now I could focus on optimizing:
+- search structure,
+- scraping rhythm,
+- scan limits,
+- and human-like behavior patterns.
+
+The next question became:
+
+“How many jobs are actually published in Colombia every day?”
+
+There was no reliable public data for this.  
+Most available information was outdated, vague, or irrelevant to the current LinkedIn ecosystem.
+
+So I decided to build my own dataset manually.
+
+Using previous experience with data analysis, I began studying publication patterns directly from LinkedIn.
+
+The first step was identifying the hours with the highest publishing activity.
+
+Combining:
+- direct LinkedIn observations,
+- recruitment behavior patterns,
+- conversations with an IT recruiter I was dating at the time,
+- and external employment trend references,
+
+I identified the highest publication window between:
+- 10 AM
+- and 2 PM.
+
+To create a realistic upper limit, I established 3 PM as the measurement checkpoint.
+
+For an entire week, every day at 3 PM, I manually filtered all jobs published within the previous 24 hours in Colombia.
+
+I also separated:
+- weekdays
+- weekends
+- and seasonal hiring periods such as holiday temporary hiring spikes.
+
+After averaging the results, I reached the following approximations:
+
+- Low activity periods:
+  - 17–19 jobs/hour during weekends
+  - 23–25 jobs/hour during weekdays
+
+- High activity periods:
+  - 30–35 jobs/hour during weekdays
+  - 20–23 jobs/hour during weekends
+
+This produced an estimated national average of approximately:
+550 job postings per day in Colombia.
+
+That number became the foundation for the entire scraping detection strategy.
+
+At this stage I realized scraping detection was not only about aggressiveness.
+
+It was about pattern behavior.
+
+I started researching:
+- how humans browse job platforms,
+- how much information people tolerate before cognitive fatigue,
+- how scraping systems create detectable navigation patterns,
+- and how anti-bot systems differentiate robotic behavior from natural interaction.
+
+One conclusion became extremely important:
+
+Even desperate users rarely browse more than 10 pages continuously before mentally disengaging.
+
+Each LinkedIn page contains 25 offers.
+
+That meant:
+- 250 offers already represented highly unnatural browsing behavior.
+
+This allowed me to define realistic scan thresholds.
+
+I established:
+- 550 offers as the system hard limit
+- equivalent to roughly 22 pages
+
+Then I adapted scan limits according to filtering windows:
+
+- 7-hour searches:
+  - maximum 14 pages
+
+- 3-hour searches:
+  - maximum 8 pages
+
+- 1-hour searches:
+  - maximum 2 pages
+
+This aligned scraping behavior with actual human expectations and realistic publication rates.
+
+Later, after deeper research, I discarded IP rotation entirely.
+
+The cost-benefit ratio made no sense for the project stage.
+
+Instead, I focused on making the scraping behavior itself appear human.
+
+This introduced:
+- jitter systems
+- adaptive stop conditions
+- dynamic interruption patterns
+- randomized behavior loops
+
+One major issue was empty-page behavior.
+
+If search filters returned very few results, LinkedIn could easily detect suspicious behavior from a server-based IP repeatedly scanning empty pages.
+
+To solve this, I created an adaptive interruption system.
+
+The scraper monitored consecutive empty result pages:
+- sometimes stopping after 1 empty page,
+- sometimes after 2,
+- sometimes after 3.
+
+The stopping pattern intentionally changed through jitter logic to avoid deterministic behavior.
+
+Another problem emerged at high volumes.
+
+If the scan exceeded the hard limit, continuing aggressively increased detection risk significantly.
+
+To contain this:
+- the system automatically blocked manual searches for 45–60 minutes,
+- users were informed through the deduplication/history system,
+- and future aggressive scans resumed later under reduced conditions.
+
+Deduplication became one of the most important optimization layers.
+
+Because previous offers were already stored:
+- repeated scans required fewer pages,
+- smaller windows,
+- and lower interaction frequency.
+
+For example:
+- after an initial aggressive 7-hour scan,
+- future automatic scans only needed to inspect approximately two pages per hour,
+- because publication averages already established realistic limits.
+
+This significantly reduced:
+- unnecessary requests,
+- repetitive navigation,
+- and detectable behavioral patterns.
+
+However, another major problem appeared after introducing relevance filtering.
+
+Even if offers already existed inside the deduplication history, the scraper still needed to read them to verify duplicates.
+
+This created an unavoidable contradiction:
+the more advanced the filtering became, the more interaction overhead scraping itself required.
+
+That realization became one of the first true philosophical limits of the project.
+
+At that point I started understanding that:
+optimizing the scraping engine further was no longer the correct direction.
+
+The real optimization target was no longer extraction.
+
+It was human intent.
+
+That shift eventually became one of the foundations for pivoting away from scraping-centered systems and toward search-oriented systems focused on reducing the gap between:
+- what users actually want,
+- and how they know how to search for it.
+
+----------------------------------#### Search Precision Problems ####---------------------------------
+
+This started as something I didn’t even recognize as a technical problem at first. It was more like a personal frustration while using LinkedIn search directly. I already understood how search systems work in theory — keyword matching, scoring, filtering, ranking — so I could mentally explain what was happening under the hood. But even with that understanding, the experience still felt uncomfortable and unintuitive in practice. It wasn’t broken, it was just constantly misaligned with how I naturally search for things.
+
+I was using LinkedIn search with a very specific mental model: I already know what I want, so I expect the system to just give it to me directly. My queries were direct, minimal, and assumed intent was obvious. At that moment I wasn’t thinking about other users, just my own way of searching.
+
+When I started thinking beyond myself, I began observing how other people actually used it.
+
+I tested it with different users:
+- a friend with no experience in structured systems or bots  
+- someone more technical  
+- my mom (no mental model of search systems)
+
+What I noticed immediately was not confusion in the sense of “they don’t understand the tool”, but something more important:
+
+- every person expressed the same intent differently  
+- no shared structure in query formation  
+- LinkedIn search reacted strictly to phrasing, not intent  
+- small wording changes completely changed results  
+
+At this point I wrote down the first real problem:
+
+- the system is not interpreting intent, it is reacting to keywords
+
+My first implementation decision was to try and fix it without changing the core model.
+
+So I worked on the scoring system.
+
+What I changed:
+
+- reduced keyword rigidity  
+- added more flexible matching rules  
+- introduced discard keywords  
+- added conditional logic between keywords  
+- added explanations of scoring behavior for users  
+
+The goal was simple:
+
+- keep LinkedIn-style keyword search  
+- make it more tolerant to variation in input  
+- reduce friction without changing architecture  
+
+At this point I still believed it was a tuning problem.
+
+But when I started testing again, the behavior didn’t actually stabilize.
+
+What I observed:
+
+- small changes in wording still produced very different results  
+- relevance was still heavily dependent on exact keyword structure  
+- identical intent was not guaranteed to produce similar outputs  
+- improvements were only shifting behavior, not solving it  
+
+So I documented the real limitation:
+
+- the system is still fundamentally keyword-driven  
+- scoring adjustments do not introduce intent understanding  
+- variation in language is not normalized by the system  
+
+This is when I stopped treating it as a configuration problem.
+
+The shift in thinking was:
+
+- I was not improving search precision anymore  
+- I was trying to compensate for a structural limitation of LinkedIn search  
+
+And the real problem became clear:
+
+- user intent is flexible  
+- LinkedIn interpretation is rigid and keyword-based  
+- meaning is lost during translation from intent → query → ranking
+
+------------------------####Technical Debt/Monolithic Architecture Problems####-------------------------
+
+As the project evolved from a simple scraping script meant to automate my job search into something that started gaining direction and real potential, I ended up in a contradiction I didn’t fully manage at the beginning.
+
+I wanted to scale it, but at the same time I kept avoiding the parts of development I personally find the most painful and “boring” in practice — at least from my own experience and what I’ve seen around me in other developers: structure, documentation, modular design, and clean architecture.
+
+At the beginning the mindset was very simple:
+
+- “Why would I document or modularize this if it’s just a script for me?”
+
+Then it slowly shifted without me really addressing it properly:
+
+- “This looks like something I could put in my portfolio”
+- and later:
+- “This is actually becoming a serious project”
+
+The problem is that through all these stages, I kept postponing proper architecture work.
+
+That decision (or lack of it) led to the main technical issue:
+
+- a monolithic codebase of ~3000 lines
+- everything tightly coupled
+- logic growing organically without structure
+- no clear separation of responsibilities
+
+At that point, the project was still working, but it was fragile in practice.
+
+---
+
+What started breaking first was maintainability:
+
+- changes in one part affected unrelated behavior
+- small edits caused unexpected side effects
+- it became difficult to reason about flow end-to-end
+
+Then operational visibility became a problem:
+
+- no proper logging system
+- no structured debugging flow
+- no clear way to trace failures
+- processes would stop “silently” without clear diagnosis
+
+At that stage, development turned into constant patching:
+
+- patch over patch
+- quick fixes to keep things running
+- increasing mental overhead just to understand what was happening
+
+---
+
+The monolithic structure also created a deeper architectural conflict.
+
+As the project evolved, I started realizing something important:
+
+- continuing to scale a scraping-based system like this didn’t make sense long-term
+- especially considering the dependency on external platforms (LinkedIn)
+
+The lack of modularity made that realization more critical, because:
+
+- everything was tied together
+- there was no clean separation between data extraction, processing, and storage
+- changing one layer meant touching everything else
+
+This is where modularization stopped being optional.
+
+---
+
+When I finally started addressing architecture properly, it naturally pushed the project in a different direction:
+
+- modular structure forced separation of concerns
+- separation of concerns naturally exposed the need for persistence
+- persistence led to the idea of using databases instead of continuous scraping
+
+That shift changed the direction of the project completely:
+
+- from “scrape and react”
+- to “store, structure, and operate on my own data”
+
+---
+
+This was also the moment where scraping stopped being the core dependency.
+
+By introducing structure and modular thinking:
+
+- I no longer needed constant external extraction
+- I could rely on my own stored dataset
+- I reduced dependency on external platforms
+- I moved away from risky or unstable workflows
+
+---
+
+On a practical level, refactoring this monolith was one of the most painful parts of the project.
+
+Constraints:
+
+- mobile development environment (not ideal for large refactors)
+- no clear documentation at the time
+- accumulated technical debt across multiple iterations
+
+What I was dealing with:
+
+- tightly coupled logic everywhere
+- hidden dependencies between modules that didn’t exist formally
+- unpredictable breakages when refactoring
+- no proper logs to guide debugging
+
+At one point, it almost pushed me to abandon the project and restart from zero with proper structure.
+
+---
+
+Instead of restarting, I used it as a forced learning phase.
+
+I dedicated roughly a week of long sessions (up to ~12 hours per day) to:
+
+- untangle the monolithic structure
+- introduce basic modular separation
+- stabilize core flows
+- add minimal but functional logging for debugging
+- reduce coupling between critical components
+
+---
+
+After that refactor, the system became stable enough to continue building on top of it.
+
+More importantly:
+
+- the architecture was no longer blocking progress
+- I had a clear separation of concerns
+- the foundation was ready for the next phase of the project
+
+At that point, I could finally move forward into the “larger idea” without constantly fighting the structure underneath it.
+
+--------------------------------#### Why the Architecture Pivot Happened ####----------------------------
+
+After going through the whole process, I realized I needed to separate two things that I had mixed together out of urgency and excitement.
+
+I rushed to share the project too early. Out of wanting to be seen and validated, I posted it on my LinkedIn and GitHub while it was still evolving. The problem was that as I kept updating it, it stopped looking like a simple scraping script meant to demonstrate API and web development skills, and started looking like a “product” I was casually giving away.
+
+That shift changed how I perceived the whole thing.
+
+So I made a decision that mirrored what I had already done in the codebase itself:
+
+- separate the ideas
+- split the project into its proper boundaries
+- stop treating everything as a single evolving artifact
+
+At this point, what I originally called an “ethical scraping project” reached what I consider its final phase in that form.
+
+But calling it just a scraping script would be a simplification of everything that happened before it.
+
+Because what I actually built was not only a scraper:
+
+- I did applied research oriented toward a real use case
+- I used known technologies and learned new ones as needed
+- I refined tools through real constraints and failures
+- I iterated based on limitations found in production-like conditions
+- I adapted the system continuously until it matched a working mental model
+
+Over time, it stopped being just implementation and became a process of exploration under constraints.
+
+That’s why the pivot makes sense.
+
+The two directions no longer belong to the same structure:
+
+- one side was experimental scraping + research under constraints
+- the other side is the next stage, built on top of what I learned
+
+So I separated them completely.
+
+What I built here still matters, but now as a foundation rather than an active component. It’s no longer part of the same system, even if it influenced everything that comes next.
+
+Even so, its value is not just technical or personal, but also professional. It reflects how I approach problems, how I adapt under constraints, and how I iterate from incomplete ideas toward something usable.
+
+If I’m honest, beyond all the technical decisions, iterations, and architectural reasoning, there is also a human layer to this whole process. A very simple one: trying to move forward, trying to build something meaningful, and trying to turn limited tools into something that opens new paths.
+
+That part is not technical, but it is probably the reason the project existed in the first place.
