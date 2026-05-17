@@ -39,7 +39,7 @@ This transition allowed me to:
 
 More importantly, it removed environment instability as a constant blocker during development.
 
-#### Infrastructure Constraints ####
+---------------------------------------#### Infrastructure Constraints ####------------------------------------------
 
 Infrastructure was never planned from the beginning.  
 At first, the entire project existed only to solve a personal problem quickly, so most infrastructure decisions were reactive instead of strategic. That changed as soon as the bot started working consistently and other people began asking to use it.
