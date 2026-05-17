@@ -1,0 +1,19 @@
+# Pivot to Search Systems
+
+## Structural Limitations of Keyword Architecture
+* Deep testing revealed that keyword-driven search architectures are fundamentally rigid and unable to process true human intent, as minor vocabulary variations completely disrupted result precision.
+* Initial optimization attempts—such as tuning scoring algorithms, establishing flexible matching guidelines, and appending conditional discard words—only masked the underlying constraints without solving the translation gap between human intent and rigid database queries.
+* Relying heavily on aggressive data extraction against third-party platforms (LinkedIn) was recognized as an unsustainable, high-risk foundation for a long-term technical product.
+
+## Data Centricity and Architecture Decoupling
+* Committing to a modular refactor naturally decoupled the data layers; isolating data extraction from data processing exposed the immediate power of data persistence.
+* This architectural clarity shifted the project's entire paradigm from a reactive "scrape and react" model to an autonomous "store, structure, and operate on an independent dataset" approach.
+* Reorganizing data ingestion with Pydantic V2 introduced strict schema validation, structured modeling, and minimized long-term database maintenance complexity.
+* To formalize this transformation, the project boundaries were completely separated; the original core was frozen as a baseline research artifact, neutralizing the product-delivery confusion caused by premature public sharing on GitHub and LinkedIn.
+
+## The Intent-Driven Search Experience
+* The ultimate engineering realization was that the true value of the system lay entirely in interpreting intent rather than optimizing raw data extraction engines.
+* The engineering objective fundamentally pivoted from "building a better scraper" to "engineering a human-centered search experience" designed to close the communication gap between users and machines.
+* Gemini Flash 2.5 Lite was integrated as a lightweight intelligence tier to interpret natural user descriptions and map them directly to structured search directions and optimized keyword parameters, preserving user control while removing friction.
+* The extensive web scraping discoveries were successfully preserved, transitioning from an unstable production dependency into a foundational layer of technical constraint metrics, behavioral datasets, and resource optimization parameters.
+
